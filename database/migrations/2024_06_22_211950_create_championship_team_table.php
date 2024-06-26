@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('champ_id')->constrained('championships');
             $table->foreignId('team_id')->constrained('teams');
-            $table->integer('registration');
+            $table->integer('registration')->default(0);
             $table->integer('gp')->default(0);
             $table->integer('gc')->default(0);
             $table->integer('points')->default(0);

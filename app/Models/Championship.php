@@ -14,18 +14,13 @@ class Championship extends Model
     protected $table = 'championships';
 
     protected $fillable = [
-        'champ_id',
-        'team_id',
-        'registration',
-        'gp',
-        'gc',
-        'points',
-        'position'
+        'name',
+        'winner_id'
     ];
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class, 'championship_team', 'champ_id', 'team_id');
+        return $this->belongsToMany(Team::class, 'championship_team', 'champ_id', 'team_id')->withPivot(['champ_id', 'team_id', 'registration', 'gp', 'gc', 'points', 'position'])->withTimestamps();
     }
 
     public function games(): HasMany
